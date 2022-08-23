@@ -20,7 +20,7 @@ Start with the theoretical exercise:
 
 [Math Quiz in Python](theory_mathquiz.ipynb)
 
-The coding exercise is short and basic introducion to applying machine learning algorithm using python and python libraries.
+The coding exercise is short and basic introducion to applying machine learning algorithms using python and python libraries.
 Take a look and try to make sense of it.
 
 [Coding Exercise](sklearn_intro.ipynb)
