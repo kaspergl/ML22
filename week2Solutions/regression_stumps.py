@@ -47,6 +47,28 @@ class RegressionStump():
         self.left = None
         self.right = None
         ### YOUR CODE HERE
+        num_points, num_features = data.shape
+        print(num_points)
+        best_score = None
+        for feat_idx in range(num_features):
+            feat = data[:, feat_idx]
+            for split_idx in range(num_points):
+                split_value = feat[split_idx]
+                goes_left = feat < split_value
+                goes_right = feat >= split_value
+                if np.sum(goes_left)==0 or np.sum(goes_right)==0:
+                    continue
+                left_mean = np.sum(targets[goes_left])/np.sum(goes_left)
+                right_mean = np.sum(targets[goes_right])/np.sum(goes_right)
+                left_score = np.sum((targets[goes_left] - left_mean)**2)
+                right_score = np.sum((targets[goes_right] - right_mean)**2)
+                total_score = left_score + right_score
+                if best_score == None or total_score < best_score:
+                    best_score = total_score
+                    self.idx = feat_idx
+                    self.val = split_value
+                    self.left = left_mean
+                    self.right = right_mean
         ### END CODE
 
     def predict(self, X):
@@ -59,6 +81,10 @@ class RegressionStump():
         """
         pred = None
         ### YOUR CODE HERE
+        dat = X[:, self.idx]
+        n = X.shape[0]        
+        decision = (dat < self.val)
+        pred = decision * self.left + (1-decision) * self.right
         ### END CODE
         return pred
     
@@ -73,6 +99,8 @@ class RegressionStump():
         """
         out = None
         ### YOUR CODE HERE
+        pred = self.predict(X)
+        out = ((pred-y)**2).mean()
         ### END CODE
         return out
         

@@ -61,12 +61,12 @@ class LinearRegressor():
         return pred
 
     def score(self, X, y):
-        """ Return accuracy of model on data X with labels y
+        """ Return mean squared loss of model on data X with labels y
         
         Args:
           X (numpy array shape n, d)
         returns
-          score (float) classifier accuracy on data X with labels y
+          score (float) mean squared loss on data X with labels y
         """
         score = 0 
         newX = self.hardcode_bias(X)
