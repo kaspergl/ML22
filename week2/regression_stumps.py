@@ -33,7 +33,7 @@ class RegressionStump():
     def fit(self, data, targets):
         """ Fit a decision stump to data
         
-        Find the best way to split the data in feat  minimizig the cost (0-1) loss of the tree after the split 
+        Find the best way to split the data in feat  minimizig the least squares loss of the tree after the split 
     
         Args:
            data: np.array (n, d)  features
