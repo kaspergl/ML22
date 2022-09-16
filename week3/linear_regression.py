@@ -75,7 +75,6 @@ class LinearRegressor():
           score (float) mean squared loss on data X with labels y
         """
         score = 0 
-        newX = self.hardcode_bias(X)
         ### YOUR CODE HERE 1-3 lines
         ### END CODE
         return score
