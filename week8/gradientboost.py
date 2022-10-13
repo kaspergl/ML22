@@ -45,6 +45,8 @@ class GradientBooster():
         to create a weak learners use 
         tmp = self.weak_learner()
         tmp.fit(Data, values)
+        
+        **Note**: To simplify the implementation, we will **not** require that the first hypothesis you train is a constant function. Instead, just train a regression tree and give it an alpha of 1.
         """  
         train_scores = []
         val_scores = []
